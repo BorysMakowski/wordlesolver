@@ -1,4 +1,4 @@
-﻿#include <iostream>
+﻿
 #include <string>
 #include <chrono>
 
@@ -8,6 +8,8 @@
 #include "brute_solver_no_repeat.h"
 #include "solver_a.h"
 #include "solver_b.h"
+#include "solver_c.h"
+#include "solver_match_pattern.h"
 
 std::string temp;
 
@@ -36,23 +38,23 @@ int main()
 
     //////////////////////////////////////////////////
 
-    SolverB solverB;
+    SolverMatchPattern solver;
 
-    auto startB = std::chrono::system_clock::now();
-    for (int i = 0; i < 100; i++)
+    auto start = std::chrono::system_clock::now();
+    for (int i = 0; i < 1000; i++)
     {
         Game game(wordList);
-        solverB.solve(&game);
+        solver.solve(&game);
 
         if (i % 1 == 0)
             std::cout << i << std::endl;
     }
-    auto endB = std::chrono::system_clock::now();
-    std::chrono::duration<double> timeB = endB - startB;
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<double> time = end - start;
 
-    std::cout << "SOLVER B ATTEMPT:" << std::endl;
-    std::cout << "times won: " << solverB.getTimesWon() << ", times lost: " << solverB.getTimesLost() << std::endl;
-    std::cout << "job took " << timeB.count() << "seconds" << std::endl;
+    std::cout << "SOLVER MATCH PATTERN ATTEMPT:" << std::endl;
+    std::cout << "times won: " << solver.getTimesWon() << ", times lost: " << solver.getTimesLost() << std::endl;
+    std::cout << "job took " << time.count() << "seconds" << std::endl;
 
     /*
  //BRUTE FORCE

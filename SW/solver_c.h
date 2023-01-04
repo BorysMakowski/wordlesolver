@@ -1,19 +1,22 @@
 #pragma once
 #include "solver.h"
 /// <summary>
-/// takes letter absence and presencce into account
+/// takes letter absence, presence and position into account
 /// </summary>
+/// 
 
-class SolverB : public Solver
+
+class SolverC : public Solver
 {
 public:
-	SolverB()
+	SolverC()
 	{
-		////std::cout << "SolverB constructor called" << std::endl;
+		////std::cout << "SolverC constructor called" << std::endl;
 	};
 
 	void solve(Game* game)
 	{
+		knownLetters = "-----";
 		reducedWordList = wordList;
 		lettersBlackList.clear();
 		lettersWhiteList.clear();
@@ -21,6 +24,8 @@ public:
 		int randNum = getRandomInt(0, reducedWordList.size() - 1);
 		prevGuess = reducedWordList.at(randNum);
 		prevResult = game->guess(prevGuess);
+
+
 		//
 		std::cout << std::endl;
 		std::cout << std::endl;
@@ -35,7 +40,7 @@ public:
 		//
 		while (!game->isFinished() && !game->isWon())
 		{
-			for (int i = 0; i < 6; ++i)
+			for (int i = 0; i < 5; ++i)
 			{
 				if (prevResult[i] == '-')
 				{
@@ -44,10 +49,20 @@ public:
 				}
 				else
 				{
-					if (!(std::find(lettersWhiteList.begin(), lettersWhiteList.end(), prevGuess[i]) != lettersWhiteList.end()))
-						lettersWhiteList.push_back(prevGuess[i]);
+					if (prevResult[i] == '+')
+					{
+						if (!(std::find(lettersWhiteList.begin(), lettersWhiteList.end(), prevGuess[i]) != lettersWhiteList.end()))
+							lettersWhiteList.push_back(prevGuess[i]);
+					}
+					else
+					{
+						knownLetters[i] = prevGuess[i];
+						if (!(std::find(lettersWhiteList.begin(), lettersWhiteList.end(), prevGuess[i]) != lettersWhiteList.end()))
+							lettersWhiteList.push_back(prevGuess[i]);
+					}
+
 				}
-					
+
 			}
 
 			std::cout << "lettersBlackList: ";
@@ -60,14 +75,12 @@ public:
 			std::cout << std::endl;
 
 			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
-				reducedWordList = propagateWordListConsiderBlackListAndWhiteList();
+			reducedWordList = propagateReducedWordList();
 			std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 
-			//if (reducedWordList.size()>0)
-			//{
-				randNum = getRandomInt(0, reducedWordList.size() - 1);
-				prevGuess = reducedWordList.at(randNum);
-			//}
+
+			randNum = getRandomInt(0, reducedWordList.size() - 1);
+			prevGuess = reducedWordList.at(randNum);
 			prevResult = game->guess(prevGuess);
 			std::cout << prevResult << std::endl;		//
 			std::cout << prevGuess << std::endl;		   //
@@ -76,19 +89,29 @@ public:
 			timesWon++;
 		else
 			timesLost++;
+
+
+			std::cout << "known letters: " << knownLetters << std::endl;
+			for (auto i : reducedWordList)
+			{
+				std::cout << i;
+				std::cout << std::endl;
+			}
+
+			std::cout <<"////////////////////////////////////////////////////"<< std::endl;
 	}
 
 	/*
 	// HELPER FUNCTIONS
 	*/
 
-	std::vector <std::string> propagateWordListConsiderBlackListAndWhiteList()
+	std::vector <std::string> propagateReducedWordList()
 	{
 		std::string temp;
 		std::vector <std::string> output;
 		for (auto i : wordList)
 		{
-			if (!containsLetterFromBlackList(i) && containsLettersFromWhiteList(i))
+			if (!containsLetterFromBlackList(i) && containsLettersFromWhiteList(i) && matchesKnownLetters(i))
 			{
 				output.push_back(i);
 			}
@@ -97,9 +120,22 @@ public:
 		return output;
 	}
 
+	bool matchesKnownLetters(std::string word)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			if (knownLetters[i] != '-')
+			{
+				if (word[i] != knownLetters[i])
+					return false;
+			}
+		}
+		return true;
+	}
+
 	bool containsLetterFromBlackList(std::string word)
 	{
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			for (auto j : lettersBlackList)
 				if (word[i] == j)
@@ -107,19 +143,6 @@ public:
 		}
 		return false;
 	}
-	//bool containsLettersFromWhiteList(std::string word)
-	//{
-	//	int count = 0;
-	//	for (int i = 0; i < 6; i++)
-	//	{
-	//		for (auto j : lettersWhiteList)
-	//			if (word[i] == j)
-	//				count++;
-	//	}
-	//	if (count >= lettersWhiteList.size())
-	//		return true;
-	//	return false;
-	//}
 
 	bool containsLettersFromWhiteList(std::string word)//235/1000, 2035s
 	{
@@ -127,7 +150,7 @@ public:
 		for (int i = 0; i < lettersWhiteList.size(); ++i)
 		{
 			counts.push_back(0);
-			for (int j = 0; j < 6; j++)
+			for (int j = 0; j < 5; j++)
 			{
 				if (word[j] == lettersWhiteList.at(i))
 				{
@@ -141,46 +164,11 @@ public:
 		return true;
 	}
 
-	//bool containsLettersFromWhiteList(std::string word)//19/100, 612s
-	//{
-	//	for (int i = 0; i < lettersWhiteList.size(); ++i)
-	//	{
-	//		count = 0;
-	//		for (int j = 0; j < 6; j++)
-	//		{
-	//			if (word[j] == lettersWhiteList.at(i))
-	//			{
-	//				count++;
-	//			}
-	//		}
-	//		if (count == 0)
-	//			return false;
-	//	}
-	//	return true;
-	//}
 
-	//bool containsLettersFromWhiteList(std::string word)//16/100, 781s
-	//{
-	//	counts.clear();
-	//	for (int i = 0; i < lettersWhiteList.size(); ++i)
-	//	{
-	//		counts.push_back(0);
-	//		for (int j = 0; j < 6; j++)
-	//		{
-	//			if (word[j] == lettersWhiteList.at(i))
-	//			{
-	//				counts.at(i)++;
-	//			}
-	//		}
-	//	}
-	//	for (auto i : counts)
-	//		if (i == 0)
-	//			return false;
-	//	return true;
-	//}
 
 private:
-	int count;
+
+	std::string knownLetters = "-----";
 	std::vector<int>counts;
 	std::vector <char> lettersBlackList;
 	std::vector <char> lettersWhiteList;
