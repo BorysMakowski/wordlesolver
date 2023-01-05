@@ -5,26 +5,47 @@
 /// </summary>
 /// 
 
+bool customSorter(std::string lhs, std::string rhs)
+{
+	const std::vector <char> mostCommonLetters{ 'a','e','s','o','r','i','l','t','n','u','d','c','y','m','p','h','b','g','k','f','w','v','z','j','x','q' };
+	int lhsScore = 0;
+	int rhsScore = 0;
 
-class SolverMatchPattern : public Solver
+	for (int i = 0; i < 5; ++i)
+	{
+		for (int j = 0; j < 26; ++j)
+		{
+			if (lhs[i] == mostCommonLetters.at(j))
+				lhsScore += (26 - j);
+			if (rhs[i] == mostCommonLetters.at(j))
+				rhsScore += (26 - j);
+		}
+	}
+	return (lhsScore > rhsScore);
+}
+
+class SolverMatchPatternB : public Solver
 {
 public:
-	SolverMatchPattern()
+	SolverMatchPatternB()
 	{
-		////std::cout << "SolverMatchPattern constructor called" << std::endl;
+		////std::cout << "SolverMatchPatternB constructor called" << std::endl;
 	};
 
 	void solve(Game* game)
 	{
 		requiredLetters.clear();
 		resetPattern();
+		int randNum = 0;
 		//showPattern();
 
 		reducedWordList = wordList;
-		//guess first word at random
-		int randNum = getRandomInt(0, reducedWordList.size() - 1);
-		prevGuess = reducedWordList.at(randNum);
+		
+		//guess first word as "arose"
+		prevGuess = "arose";
+
 		prevResult = game->guess(prevGuess);
+		int guessNumber = 1;
 
 		//
 		std::cout << std::endl;
@@ -69,11 +90,21 @@ public:
 			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			reducedWordList = applyPattern();
 			std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
-
-
-			randNum = getRandomInt(0, reducedWordList.size() - 1);
+			if (guessNumber < 3)
+			{
+				std::cout << "XXXX" << std::endl;
+				std::sort(reducedWordList.begin(), reducedWordList.end(), customSorter);
+				randNum = 0;
+				while (!uniqueLetters(reducedWordList.at(randNum)))
+					randNum++;
+			}
+			else
+			{
+				randNum = getRandomInt(0, reducedWordList.size() - 1);
+			}
 			prevGuess = reducedWordList.at(randNum);
 			prevResult = game->guess(prevGuess);
+			guessNumber++;
 			std::cout << prevResult << std::endl;		//
 			std::cout << prevGuess << std::endl;		   //
 		}
@@ -132,12 +163,12 @@ public:
 	bool matchesPattern(std::string word)
 	{
 
-			for (int i = 0; i < 5; ++i)
-			{
-				if (!(std::find(pattern[i].begin(), pattern[i].end(), word[i]) != pattern[i].end()))
-					return false;
-			}
-		
+		for (int i = 0; i < 5; ++i)
+		{
+			if (!(std::find(pattern[i].begin(), pattern[i].end(), word[i]) != pattern[i].end()))
+				return false;
+		}
+
 		return true;
 	}
 
@@ -161,9 +192,18 @@ public:
 		return true;
 	}
 
+	bool uniqueLetters(std::string word)
+	{
+		std::set<char> wordSet;
+		for (auto i : word)
+			wordSet.insert(i);
+		return wordSet.size() == word.size();
+	}
+
 private:
 	std::vector <char> pattern[5];
 	std::vector <char> requiredLetters;
+
 	std::string prevResult = "";
 	std::string prevGuess = "";
 	std::vector <std::string> reducedWordList;

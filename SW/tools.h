@@ -4,6 +4,7 @@
 #include <random>
 #include <vector>
 #include <map>
+#include <set>
 #include <iostream>
 
 std::vector <std::string> propagateWordList()

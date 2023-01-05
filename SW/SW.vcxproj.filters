@@ -44,7 +44,10 @@
     <ClInclude Include="solver_c.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="solver_match_pattern.h">
+    <ClInclude Include="solver_match_pattern_a.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="solver_match_pattern_b.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

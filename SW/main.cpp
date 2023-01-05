@@ -9,7 +9,8 @@
 #include "solver_a.h"
 #include "solver_b.h"
 #include "solver_c.h"
-#include "solver_match_pattern.h"
+#include "solver_match_pattern_a.h"
+#include "solver_match_pattern_b.h"
 
 std::string temp;
 
@@ -38,7 +39,7 @@ int main()
 
     //////////////////////////////////////////////////
 
-    SolverMatchPattern solver;
+    SolverMatchPatternB solver;
 
     auto start = std::chrono::system_clock::now();
     for (int i = 0; i < 1000; i++)
@@ -52,7 +53,7 @@ int main()
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> time = end - start;
 
-    std::cout << "SOLVER MATCH PATTERN ATTEMPT:" << std::endl;
+    std::cout << "SOLVER MATCH PATTERN A ATTEMPT:" << std::endl;
     std::cout << "times won: " << solver.getTimesWon() << ", times lost: " << solver.getTimesLost() << std::endl;
     std::cout << "job took " << time.count() << "seconds" << std::endl;
 
