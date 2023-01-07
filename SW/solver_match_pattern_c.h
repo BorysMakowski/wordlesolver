@@ -5,25 +5,50 @@
 /// </summary>
 /// 
 
+bool customSorterAsc(std::string lhs, std::string rhs)
+{
+	std::vector <char> mostCommonLetters{ 'a','e','s','o','r','i','l','t','n','u','d','c','y','m','p','h','b','g','k','f','w','v','z','j','x','q' };
+	std::reverse(mostCommonLetters.begin(), mostCommonLetters.end());
+	std::set<int> lhsScore;
+	std::set<int> rhsScore;
 
-class SolverMatchPatternA : public Solver
+
+	for (int i = 0; i < 5; ++i)
+	{
+		for (int j = 0; j < 26; ++j)
+		{
+			if (lhs[i] == mostCommonLetters.at(j))
+				lhsScore.insert(26 - j);
+			if (rhs[i] == mostCommonLetters.at(j))
+				rhsScore.insert(26 - j);
+		}
+	}
+	int lhsSum = std::accumulate(lhsScore.begin(), lhsScore.end(), 0);
+	int rhsSum = std::accumulate(rhsScore.begin(), rhsScore.end(), 0);
+	return (lhsSum > rhsSum);
+}
+
+class SolverMatchPatternC : public Solver
 {
 public:
-	SolverMatchPatternA()
+	SolverMatchPatternC()
 	{
-		std::cout << "SolverMatchPatternA constructor called" << std::endl;
+		std::cout << "SolverMatchPatternC constructor called" << std::endl;
 	};
 
 	void solve(Game* game)
 	{
 		requiredLetters.clear();
 		resetPattern();
-		//showPattern();
 
 		reducedWordList = wordList;
-		//guess first word at random
-		int randNum = getRandomInt(0, reducedWordList.size() - 1);
-		prevGuess = reducedWordList.at(randNum);
+
+		//guess first word as "jumby"
+		prevGuess = "jumby";
+
+		//std::sort(reducedWordList.begin(), reducedWordList.end(), customSorterAsc);
+		//prevGuess = reducedWordList.at(0);
+
 		prevResult = game->guess(prevGuess);
 		int guessNumber = 1;
 
@@ -64,31 +89,44 @@ public:
 				}
 
 			}
-			//showPattern();
 
-
-			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			reducedWordList = applyPattern();
 			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			wordListSizes.at(guessNumber) += reducedWordList.size();
 
-			randNum = getRandomInt(0, reducedWordList.size() - 1);
-			prevGuess = reducedWordList.at(randNum);
+			std::sort(reducedWordList.begin(), reducedWordList.end(), customSorterAsc);
+			//randNum = 0;
+			//while (!uniqueLetters(reducedWordList.at(randNum)))
+			//{
+			//	randNum++;
+			//	if (randNum >= reducedWordList.size())
+			//	{
+			//		//reducedWordList contains only words with multiple occurences of same letter
+			//		//pick the first one
+			//		randNum = 0;
+			//		break;
+			//	}
+			//}
+
+		//prevGuess = reducedWordList.at(randNum);
+			prevGuess = reducedWordList.at(0);
+
 			prevResult = game->guess(prevGuess);
 			guessNumber++;
-			//std::cout << prevResult << std::endl;		//
-			//std::cout << prevGuess << std::endl;		   //
+			//std::cout << prevResult << std::endl;		//DUCK
+			//std::cout << prevGuess << std::endl;		   //DUCK
 		}
 		if (game->isWon())
 		{
 			timesWon++;
 			wonAtGuess.at(guessNumber)++;
 		}
+
 		else
 			timesLost++;
 
 
-		//std::cout << "////////////////////////////////////////////////////" << std::endl;
+		//std::cout << "////////////////////////////////////////////////////" << std::endl; //DUCK
 	}
 
 	/*
@@ -137,12 +175,12 @@ public:
 	bool matchesPattern(std::string word)
 	{
 
-			for (int i = 0; i < 5; ++i)
-			{
-				if (!(std::find(pattern[i].begin(), pattern[i].end(), word[i]) != pattern[i].end()))
-					return false;
-			}
-		
+		for (int i = 0; i < 5; ++i)
+		{
+			if (!(std::find(pattern[i].begin(), pattern[i].end(), word[i]) != pattern[i].end()))
+				return false;
+		}
+
 		return true;
 	}
 
@@ -164,6 +202,14 @@ public:
 			if (i == 0)
 				return false;
 		return true;
+	}
+
+	bool uniqueLetters(std::string word)
+	{
+		std::set<char> wordSet;
+		for (auto i : word)
+			wordSet.insert(i);
+		return wordSet.size() == word.size();
 	}
 
 private:

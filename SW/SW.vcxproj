@@ -151,6 +151,7 @@
     <ClInclude Include="solver_c.h" />
     <ClInclude Include="solver_match_pattern_a.h" />
     <ClInclude Include="solver_match_pattern_b.h" />
+    <ClInclude Include="solver_match_pattern_c.h" />
     <ClInclude Include="tools.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

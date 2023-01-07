@@ -9,7 +9,7 @@ class SolverA : public Solver
 public:
 	SolverA()
 	{
-		////std::cout << "SolverA constructor called" << std::endl;
+		std::cout << "SolverA constructor called" << std::endl;
 	};
 
 	void solve(Game* game)
@@ -20,6 +20,7 @@ public:
 		int randNum = getRandomInt(0, reducedWordList.size() - 1);
 		prevGuess = reducedWordList.at(randNum);
 		prevResult = game->guess(prevGuess);
+		int guessNumber = 1;
 		//
 		//std::cout << "=====" << std::endl;//
 		//std::cout << game->getSolution() << std::endl;//
@@ -29,7 +30,7 @@ public:
 		//
 		while (!game->isFinished() && !game->isWon())
 		{
-			for (int i = 0; i < 6; ++i)
+			for (int i = 0; i < 5; ++i)
 			{
 				if (prevResult[i] == '-')
 					lettersBlackList.push_back(prevGuess[i]);
@@ -42,18 +43,22 @@ public:
 			////std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			reducedWordList = propagateWordListConsiderBlacklist();
 			////std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
+			wordListSizes.at(guessNumber) += reducedWordList.size();
 
-			if (reducedWordList.size() > 0)
-			{
+
 				randNum = getRandomInt(0, reducedWordList.size() - 1);
 				prevGuess = reducedWordList.at(randNum);
-			}
+
 			prevResult = game->guess(prevGuess);
+			guessNumber++;
 			//std::cout << prevResult << std::endl;		//
 			//std::cout << prevGuess << std::endl;		   //
 		}
 		if (game->isWon())
+		{
 			timesWon++;
+			wonAtGuess.at(guessNumber)++;
+		}
 		else
 			timesLost++;
 	}
@@ -76,7 +81,7 @@ public:
 
 	bool containsLetterFromBlackList(std::string word)
 	{
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			for (auto j : lettersBlackList)
 				if (word[i] == j)

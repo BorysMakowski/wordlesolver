@@ -9,7 +9,7 @@ class SolverB : public Solver
 public:
 	SolverB()
 	{
-		////std::cout << "SolverB constructor called" << std::endl;
+		std::cout << "SolverB constructor called" << std::endl;
 	};
 
 	void solve(Game* game)
@@ -21,21 +21,22 @@ public:
 		int randNum = getRandomInt(0, reducedWordList.size() - 1);
 		prevGuess = reducedWordList.at(randNum);
 		prevResult = game->guess(prevGuess);
-		//
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << "=====" << std::endl;//
+		int guessNumber = 1;
+		////
+		//std::cout << std::endl;
+		//std::cout << std::endl;
+		//std::cout << std::endl;
+		//std::cout << std::endl;
+		//std::cout << "=====" << std::endl;//
 
-		std::cout << game->getSolution() << std::endl;//
-		std::cout << "=====" << std::endl;//
-		std::cout << prevResult << std::endl;		//
-		std::cout << prevGuess << std::endl;		   //
-		//
+		//std::cout << game->getSolution() << std::endl;//
+		//std::cout << "=====" << std::endl;//
+		//std::cout << prevResult << std::endl;		//
+		//std::cout << prevGuess << std::endl;		   //
+		////
 		while (!game->isFinished() && !game->isWon())
 		{
-			for (int i = 0; i < 6; ++i)
+			for (int i = 0; i < 5; ++i)
 			{
 				if (prevResult[i] == '-')
 				{
@@ -50,18 +51,19 @@ public:
 					
 			}
 
-			std::cout << "lettersBlackList: ";
-			for (auto i : lettersBlackList)
-				std::cout << i;
-			std::cout << std::endl;
-			std::cout << "lettersWhiteList: ";
-			for (auto i : lettersWhiteList)
-				std::cout << i;
-			std::cout << std::endl;
+			//std::cout << "lettersBlackList: ";
+			//for (auto i : lettersBlackList)
+			//	std::cout << i;
+			//std::cout << std::endl;
+			//std::cout << "lettersWhiteList: ";
+			//for (auto i : lettersWhiteList)
+			//	std::cout << i;
+			//std::cout << std::endl;
 
 			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 				reducedWordList = propagateWordListConsiderBlackListAndWhiteList();
-			std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
+			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
+			wordListSizes.at(guessNumber) += reducedWordList.size();
 
 			//if (reducedWordList.size()>0)
 			//{
@@ -69,11 +71,15 @@ public:
 				prevGuess = reducedWordList.at(randNum);
 			//}
 			prevResult = game->guess(prevGuess);
-			std::cout << prevResult << std::endl;		//
-			std::cout << prevGuess << std::endl;		   //
+			guessNumber++;
+			//std::cout << prevResult << std::endl;		//
+			//std::cout << prevGuess << std::endl;		   //
 		}
 		if (game->isWon())
+		{
 			timesWon++;
+			wonAtGuess.at(guessNumber)++;
+		}
 		else
 			timesLost++;
 	}
@@ -99,7 +105,7 @@ public:
 
 	bool containsLetterFromBlackList(std::string word)
 	{
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			for (auto j : lettersBlackList)
 				if (word[i] == j)
@@ -180,7 +186,7 @@ public:
 	//}
 
 private:
-	int count;
+	//int count;
 	std::vector<int>counts;
 	std::vector <char> lettersBlackList;
 	std::vector <char> lettersWhiteList;

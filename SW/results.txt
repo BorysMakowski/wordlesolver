@@ -1,0 +1,145 @@
+BRUTE SOLVER ATTEMPT:
+times won: 0, times lost: 5
+job took 0.769585seconds
+Wordlist size on attempt 0: 0
+Wordlist size on attempt 1: 0
+Wordlist size on attempt 2: 0
+Wordlist size on attempt 3: 0
+Wordlist size on attempt 4: 0
+Wordlist size on attempt 5: 0
+Wordlist size on attempt 6: 0
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 0
+Won at guess: 4: 0
+Won at guess: 5: 0
+Won at guess: 6: 0
+
+BRUTE FORCE NO REPEATS ATTEMPT:
+times won: 0, times lost: 5
+job took 0.726447seconds
+Wordlist size on attempt 0: 0
+Wordlist size on attempt 1: 0
+Wordlist size on attempt 2: 0
+Wordlist size on attempt 3: 0
+Wordlist size on attempt 4: 0
+Wordlist size on attempt 5: 0
+Wordlist size on attempt 6: 0
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 0
+Won at guess: 4: 0
+Won at guess: 5: 0
+Won at guess: 6: 0
+
+SOLVER A ATTEMPT:
+times won: 0, times lost: 5
+job took 3.14757seconds
+Wordlist size on attempt 0: 0
+Wordlist size on attempt 1: 37332
+Wordlist size on attempt 2: 16536
+Wordlist size on attempt 3: 9422
+Wordlist size on attempt 4: 5392
+Wordlist size on attempt 5: 1866
+Wordlist size on attempt 6: 0
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 0
+Won at guess: 4: 0
+Won at guess: 5: 0
+Won at guess: 6: 0
+
+SOLVER B ATTEMPT:
+times won: 0, times lost: 5
+job took 3.83264seconds
+Wordlist size on attempt 0: 0
+Wordlist size on attempt 1: 14480
+Wordlist size on attempt 2: 2104
+Wordlist size on attempt 3: 836
+Wordlist size on attempt 4: 266
+Wordlist size on attempt 5: 216
+Wordlist size on attempt 6: 0
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 0
+Won at guess: 4: 0
+Won at guess: 5: 0
+Won at guess: 6: 0
+
+SOLVER C ATTEMPT:
+times won: 2, times lost: 3
+job took 3.03242seconds
+Wordlist size on attempt 0: 0
+Wordlist size on attempt 1: 19691
+Wordlist size on attempt 2: 769
+Wordlist size on attempt 3: 269
+Wordlist size on attempt 4: 76
+Wordlist size on attempt 5: 21
+Wordlist size on attempt 6: 0
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 0
+Won at guess: 4: 0
+Won at guess: 5: 0
+Won at guess: 6: 2
+
+SOLVER MATCH PATTERN A ATTEMPT:
+times won: 4, times lost: 1
+job took 3.10549seconds
+Wordlist size on attempt 0: 0
+Wordlist size on attempt 1: 10032
+Wordlist size on attempt 2: 1139
+Wordlist size on attempt 3: 96
+Wordlist size on attempt 4: 12
+Wordlist size on attempt 5: 3
+Wordlist size on attempt 6: 0
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 0
+Won at guess: 4: 3
+Won at guess: 5: 1
+Won at guess: 6: 0
+
+SOLVER MATCH PATTERN B ATTEMPT:
+times won: 4, times lost: 1
+job took 4.98138seconds
+Wordlist size on attempt 0: 0
+Wordlist size on attempt 1: 1868
+Wordlist size on attempt 2: 80
+Wordlist size on attempt 3: 20
+Wordlist size on attempt 4: 15
+Wordlist size on attempt 5: 6
+Wordlist size on attempt 6: 0
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 1
+Won at guess: 4: 1
+Won at guess: 5: 2
+Won at guess: 6: 0
+
+SOLVER MATCH PATTERN C ATTEMPT:
+times won: 5, times lost: 0
+job took 31.0728seconds
+Wordlist size on attempt 0: 0
+Wordlist size on attempt 1: 24396
+Wordlist size on attempt 2: 2895
+Wordlist size on attempt 3: 342
+Wordlist size on attempt 4: 52
+Wordlist size on attempt 5: 1
+Wordlist size on attempt 6: 0
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 0
+Won at guess: 4: 0
+Won at guess: 5: 4
+Won at guess: 6: 1
+
+whole job took 69.7435seconds

@@ -6,6 +6,7 @@
 #include <map>
 #include <set>
 #include <iostream>
+#include <numeric>
 
 std::vector <std::string> propagateWordList()
 {

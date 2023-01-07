@@ -20,9 +20,21 @@ public:
 		return timesLost;
 	}
 
+	std::vector<int> getWordListSizes()
+	{
+		return wordListSizes;
+	}
+
+	std::vector<int> getWonAtGuess()
+	{
+		return wonAtGuess;
+	}
+
 protected:
 	int timesWon = 0;
 	int timesLost = 0;
+	std::vector<int> wordListSizes{ 0,0,0,0,0,0,0 };
+	std::vector<int> wonAtGuess{ 0,0,0,0,0,0,0 };
 	std::vector <std::string> wordList = propagateWordList();
 
 };

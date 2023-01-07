@@ -8,20 +8,23 @@
 bool customSorter(std::string lhs, std::string rhs)
 {
 	const std::vector <char> mostCommonLetters{ 'a','e','s','o','r','i','l','t','n','u','d','c','y','m','p','h','b','g','k','f','w','v','z','j','x','q' };
-	int lhsScore = 0;
-	int rhsScore = 0;
+	std::set<int> lhsScore;
+	std::set<int> rhsScore;
+
 
 	for (int i = 0; i < 5; ++i)
 	{
 		for (int j = 0; j < 26; ++j)
 		{
 			if (lhs[i] == mostCommonLetters.at(j))
-				lhsScore += (26 - j);
+				lhsScore.insert(26 - j);
 			if (rhs[i] == mostCommonLetters.at(j))
-				rhsScore += (26 - j);
+				rhsScore.insert(26 - j);
 		}
 	}
-	return (lhsScore > rhsScore);
+	int lhsSum = std::accumulate(lhsScore.begin(), lhsScore.end(), 0);
+	int rhsSum = std::accumulate(rhsScore.begin(), rhsScore.end(), 0);
+	return (lhsSum > rhsSum);
 }
 
 class SolverMatchPatternB : public Solver
@@ -29,36 +32,38 @@ class SolverMatchPatternB : public Solver
 public:
 	SolverMatchPatternB()
 	{
-		////std::cout << "SolverMatchPatternB constructor called" << std::endl;
+		std::cout << "SolverMatchPatternB constructor called" << std::endl;
 	};
 
 	void solve(Game* game)
 	{
 		requiredLetters.clear();
 		resetPattern();
-		int randNum = 0;
-		//showPattern();
 
 		reducedWordList = wordList;
 		
-		//guess first word as "arose"
-		prevGuess = "arose";
+		//guess first word as "seora"
+		prevGuess = "seora";
+
+		//std::sort(reducedWordList.begin(), reducedWordList.end(), customSorter);
+		//randNum = 0;
+		//prevGuess = reducedWordList.at(randNum);
 
 		prevResult = game->guess(prevGuess);
 		int guessNumber = 1;
 
-		//
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << "=====" << std::endl;//
+		////DUCK
+		//std::cout << std::endl;
+		//std::cout << std::endl;
+		//std::cout << std::endl;
+		//std::cout << std::endl;
+		//std::cout << "=====" << std::endl;//DUCK
 
-		std::cout << game->getSolution() << std::endl;//
-		std::cout << "=====" << std::endl;//
-		std::cout << prevResult << std::endl;		//
-		std::cout << prevGuess << std::endl;		   //
-		//
+		//std::cout << game->getSolution() << std::endl;//DUCK
+		//std::cout << "=====" << std::endl;//DUCK
+		//std::cout << prevResult << std::endl;		//DUCK
+		//std::cout << prevGuess << std::endl;		   //DUCK
+		////DUCK
 		while (!game->isFinished() && !game->isWon())
 		{
 			for (int i = 0; i < 5; ++i)
@@ -84,37 +89,44 @@ public:
 				}
 
 			}
-			//showPattern();
 
-
-			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			reducedWordList = applyPattern();
-			std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
-			if (guessNumber < 3)
-			{
-				std::cout << "XXXX" << std::endl;
+			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
+			wordListSizes.at(guessNumber)+= reducedWordList.size();
+
 				std::sort(reducedWordList.begin(), reducedWordList.end(), customSorter);
-				randNum = 0;
-				while (!uniqueLetters(reducedWordList.at(randNum)))
-					randNum++;
-			}
-			else
-			{
-				randNum = getRandomInt(0, reducedWordList.size() - 1);
-			}
-			prevGuess = reducedWordList.at(randNum);
+				//randNum = 0;
+				//while (!uniqueLetters(reducedWordList.at(randNum)))
+				//{
+				//	randNum++;
+				//	if (randNum >= reducedWordList.size())
+				//	{
+				//		//reducedWordList contains only words with multiple occurences of same letter
+				//		//pick the first one
+				//		randNum = 0;
+				//		break;
+				//	}
+				//}
+					
+			//prevGuess = reducedWordList.at(randNum);
+			prevGuess = reducedWordList.at(0);
+
 			prevResult = game->guess(prevGuess);
 			guessNumber++;
-			std::cout << prevResult << std::endl;		//
-			std::cout << prevGuess << std::endl;		   //
+			//std::cout << prevResult << std::endl;		//DUCK
+			//std::cout << prevGuess << std::endl;		   //DUCK
 		}
 		if (game->isWon())
+		{
 			timesWon++;
+			wonAtGuess.at(guessNumber)++;
+		}
+
 		else
 			timesLost++;
 
 
-		std::cout << "////////////////////////////////////////////////////" << std::endl;
+		//std::cout << "////////////////////////////////////////////////////" << std::endl; //DUCK
 	}
 
 	/*
@@ -203,7 +215,6 @@ public:
 private:
 	std::vector <char> pattern[5];
 	std::vector <char> requiredLetters;
-
 	std::string prevResult = "";
 	std::string prevGuess = "";
 	std::vector <std::string> reducedWordList;
