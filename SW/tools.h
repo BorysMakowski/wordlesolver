@@ -49,5 +49,5 @@ void getLetterOccurences()
 
 	std::sort(lettersSorted.rbegin(), lettersSorted.rend());
 	for (auto i : lettersSorted)
-		std::cout << i.first << ", " << i.second << std::endl;	
+		std::cout << i.first << ", " << i.second << std::endl;
 }

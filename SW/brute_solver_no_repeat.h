@@ -4,14 +4,17 @@
 class BruteSolverNoRepeat : public Solver
 {
 public:
-	BruteSolverNoRepeat()
+	BruteSolverNoRepeat(std::vector <std::string> _wordList) :Solver(_wordList)
 	{
-		//std::cout << timesWon << " " << timesLost << " " << wordList.at(1) << std::endl;
-		std::cout << "BruteSolverNoRepeat constructor called" << std::endl;
+		//std::cout << "BruteSolverNoRepeat constructor called" << std::endl;
 	};
+	virtual ~BruteSolverNoRepeat() {};
 
 	void solve(Game* game)
 	{
+		for (int i = 0; i < 6; ++i)
+			wordListSizes.at(i) += (wordList.size() - i);
+
 		int guessNumber = 0;
 		while (!game->isFinished() && !game->isWon())
 		{
@@ -19,7 +22,6 @@ public:
 			while (wasTried(randNum))
 				randNum = getRandomInt(0, wordList.size() - 1);
 
-			//std::cout << game.guess(wordList.at(getRandomInt(0, wordList.size()))) << std::endl;
 			game->guess(wordList.at(randNum));
 			guessNumber++;
 			triedWords.push_back(randNum);

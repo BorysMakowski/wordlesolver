@@ -14,12 +14,7 @@ public:
 		finished = false;
 		result = false;
 
-		solution = wordList.at(getRandomInt(0, wordList.size()-1));
-
-		//std::cout << " SECRET SOLUTION, DONT LOOK: " << std::endl;
-		//std::cout << solution << std::endl;
-		//std::cout << " -------------------------- " << std::endl;
-
+		solution = wordList.at(getRandomInt(0, wordList.size() - 1));
 	};
 
 	//copy constructor
@@ -32,6 +27,7 @@ public:
 		result = in.result;
 	}
 
+	~Game() {};
 
 	std::string guess(std::string _guess)
 	{
@@ -114,7 +110,7 @@ public:
 		return false;
 	}
 
-	bool isWordInWordList(std::string _in) 
+	bool isWordInWordList(std::string _in)
 	{
 		for (auto i : wordList)
 			if (i == _in)

@@ -153,6 +153,7 @@
     <ClInclude Include="solver_match_pattern_b.h" />
     <ClInclude Include="solver_match_pattern_c.h" />
     <ClInclude Include="tools.h" />
+    <ClInclude Include="wordle_solver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,20 +4,20 @@
 class BruteSolver : public Solver
 {
 public:
-	BruteSolver()
+	BruteSolver(std::vector <std::string> _wordList) :Solver(_wordList)
 	{
-		//std::cout << timesWon << " " << timesLost << " " << wordList.at(1) << std::endl;
-		std::cout << "BruteSolver constructor called" << std::endl;
+		//std::cout << "BruteSolver constructor called" << std::endl;
 	};
+	virtual ~BruteSolver() {};
 
 	void solve(Game* game)
 	{
+		for (int i = 0; i < 6; ++i)
+			wordListSizes.at(i) += wordList.size();
 		int guessNumber = 0;
 		while (!game->isFinished() && !game->isWon())
 		{
-			int randNum = getRandomInt(0, wordList.size()-1);
-
-			//std::cout << game.guess(wordList.at(getRandomInt(0, wordList.size()))) << std::endl;
+			int randNum = getRandomInt(0, wordList.size() - 1);
 			game->guess(wordList.at(randNum));
 			guessNumber++;
 		}

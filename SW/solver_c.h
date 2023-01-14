@@ -9,15 +9,18 @@
 class SolverC : public Solver
 {
 public:
-	SolverC()
+	SolverC(std::vector <std::string> _wordList) :Solver(_wordList)
 	{
-		std::cout << "SolverC constructor called" << std::endl;
+		//std::cout << "SolverC constructor called" << std::endl;
 	};
+	virtual ~SolverC() {};
+
 
 	void solve(Game* game)
 	{
 		knownLetters = "-----";
 		reducedWordList = wordList;
+		wordListSizes.at(0) += reducedWordList.size();
 		lettersBlackList.clear();
 		lettersWhiteList.clear();
 		//guess first word at random
@@ -26,19 +29,6 @@ public:
 		prevResult = game->guess(prevGuess);
 		int guessNumber = 1;
 
-
-		////
-		//std::cout << std::endl;
-		//std::cout << std::endl;
-		//std::cout << std::endl;
-		//std::cout << std::endl;
-		//std::cout << "=====" << std::endl;//
-
-		//std::cout << game->getSolution() << std::endl;//
-		//std::cout << "=====" << std::endl;//
-		//std::cout << prevResult << std::endl;		//
-		//std::cout << prevGuess << std::endl;		   //
-		////
 		while (!game->isFinished() && !game->isWon())
 		{
 			for (int i = 0; i < 5; ++i)
@@ -66,18 +56,7 @@ public:
 
 			}
 
-			//std::cout << "lettersBlackList: ";
-			//for (auto i : lettersBlackList)
-			//	std::cout << i;
-			//std::cout << std::endl;
-			//std::cout << "lettersWhiteList: ";
-			//for (auto i : lettersWhiteList)
-			//	std::cout << i;
-			//std::cout << std::endl;
-
-			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			reducedWordList = propagateReducedWordList();
-			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			wordListSizes.at(guessNumber) += reducedWordList.size();
 
 
@@ -85,9 +64,8 @@ public:
 			prevGuess = reducedWordList.at(randNum);
 			prevResult = game->guess(prevGuess);
 			guessNumber++;
-			//std::cout << prevResult << std::endl;		//
-			//std::cout << prevGuess << std::endl;		   //
 		}
+
 		if (game->isWon())
 		{
 			timesWon++;
@@ -95,16 +73,6 @@ public:
 		}
 		else
 			timesLost++;
-
-
-			//std::cout << "known letters: " << knownLetters << std::endl;
-			//for (auto i : reducedWordList)
-			//{
-			//	std::cout << i;
-			//	std::cout << std::endl;
-			//}
-
-			//std::cout <<"////////////////////////////////////////////////////"<< std::endl;
 	}
 
 	/*
@@ -150,10 +118,10 @@ public:
 		return false;
 	}
 
-	bool containsLettersFromWhiteList(std::string word)//235/1000, 2035s
+	bool containsLettersFromWhiteList(std::string word)
 	{
 		std::vector<int>counts;
-		for (int i = 0; i < lettersWhiteList.size(); ++i)
+		for (unsigned int i = 0; i < lettersWhiteList.size(); ++i)
 		{
 			counts.push_back(0);
 			for (int j = 0; j < 5; j++)
@@ -173,7 +141,6 @@ public:
 
 
 private:
-
 	std::string knownLetters = "-----";
 	std::vector<int>counts;
 	std::vector <char> lettersBlackList;

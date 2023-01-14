@@ -30,10 +30,12 @@ bool customSorter(std::string lhs, std::string rhs)
 class SolverMatchPatternB : public Solver
 {
 public:
-	SolverMatchPatternB()
+	SolverMatchPatternB(std::vector <std::string> _wordList) :Solver(_wordList)
 	{
-		std::cout << "SolverMatchPatternB constructor called" << std::endl;
+		//std::cout << "SolverMatchPatternB constructor called" << std::endl;
 	};
+	virtual ~SolverMatchPatternB() {};
+
 
 	void solve(Game* game)
 	{
@@ -41,29 +43,12 @@ public:
 		resetPattern();
 
 		reducedWordList = wordList;
-		
-		//guess first word as "seora"
-		prevGuess = "seora";
-
-		//std::sort(reducedWordList.begin(), reducedWordList.end(), customSorter);
-		//randNum = 0;
-		//prevGuess = reducedWordList.at(randNum);
+		wordListSizes.at(0) += reducedWordList.size();
+		prevGuess = *std::min_element(reducedWordList.begin(), reducedWordList.end(), customSorter);
 
 		prevResult = game->guess(prevGuess);
 		int guessNumber = 1;
 
-		////DUCK
-		//std::cout << std::endl;
-		//std::cout << std::endl;
-		//std::cout << std::endl;
-		//std::cout << std::endl;
-		//std::cout << "=====" << std::endl;//DUCK
-
-		//std::cout << game->getSolution() << std::endl;//DUCK
-		//std::cout << "=====" << std::endl;//DUCK
-		//std::cout << prevResult << std::endl;		//DUCK
-		//std::cout << prevGuess << std::endl;		   //DUCK
-		////DUCK
 		while (!game->isFinished() && !game->isWon())
 		{
 			for (int i = 0; i < 5; ++i)
@@ -85,37 +70,21 @@ public:
 						pattern[i].clear();
 						pattern[i].push_back(prevResult[i]);
 					}
-
 				}
-
 			}
 
 			reducedWordList = applyPattern();
-			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
-			wordListSizes.at(guessNumber)+= reducedWordList.size();
+			wordListSizes.at(guessNumber) += reducedWordList.size();
 
-				std::sort(reducedWordList.begin(), reducedWordList.end(), customSorter);
-				//randNum = 0;
-				//while (!uniqueLetters(reducedWordList.at(randNum)))
-				//{
-				//	randNum++;
-				//	if (randNum >= reducedWordList.size())
-				//	{
-				//		//reducedWordList contains only words with multiple occurences of same letter
-				//		//pick the first one
-				//		randNum = 0;
-				//		break;
-				//	}
-				//}
-					
-			//prevGuess = reducedWordList.at(randNum);
-			prevGuess = reducedWordList.at(0);
+			//std::sort(reducedWordList.begin(), reducedWordList.end(), customSorter);
+
+			//prevGuess = reducedWordList.at(0);
+			prevGuess = *std::min_element(reducedWordList.begin(), reducedWordList.end(), customSorter);
 
 			prevResult = game->guess(prevGuess);
 			guessNumber++;
-			//std::cout << prevResult << std::endl;		//DUCK
-			//std::cout << prevGuess << std::endl;		   //DUCK
 		}
+
 		if (game->isWon())
 		{
 			timesWon++;
@@ -124,9 +93,6 @@ public:
 
 		else
 			timesLost++;
-
-
-		//std::cout << "////////////////////////////////////////////////////" << std::endl; //DUCK
 	}
 
 	/*
@@ -187,7 +153,7 @@ public:
 	bool containsRequiredLetters(std::string word)
 	{
 		std::vector<int>counts;
-		for (int i = 0; i < requiredLetters.size(); ++i)
+		for (unsigned int i = 0; i < requiredLetters.size(); ++i)
 		{
 			counts.push_back(0);
 			for (int j = 0; j < 5; j++)

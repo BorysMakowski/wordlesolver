@@ -7,27 +7,24 @@
 class SolverA : public Solver
 {
 public:
-	SolverA()
+	SolverA(std::vector <std::string> _wordList) :Solver(_wordList)
 	{
-		std::cout << "SolverA constructor called" << std::endl;
+		//std::cout << "SolverA constructor called" << std::endl;
 	};
+	virtual ~SolverA() {};
+
 
 	void solve(Game* game)
 	{
 		reducedWordList = wordList;
+		wordListSizes.at(0) += reducedWordList.size();
 		lettersBlackList.clear();
 		//guess first word at random
 		int randNum = getRandomInt(0, reducedWordList.size() - 1);
 		prevGuess = reducedWordList.at(randNum);
 		prevResult = game->guess(prevGuess);
 		int guessNumber = 1;
-		//
-		//std::cout << "=====" << std::endl;//
-		//std::cout << game->getSolution() << std::endl;//
-		//std::cout << "=====" << std::endl;//
-		//std::cout << prevResult << std::endl;		//
-		//std::cout << prevGuess << std::endl;		   //
-		//
+
 		while (!game->isFinished() && !game->isWon())
 		{
 			for (int i = 0; i < 5; ++i)
@@ -36,24 +33,17 @@ public:
 					lettersBlackList.push_back(prevGuess[i]);
 			}
 
-			//for (auto i : lettersBlackList)
-			//	std::cout << i;
-			////std::cout << std::endl;
-
-			////std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			reducedWordList = propagateWordListConsiderBlacklist();
-			////std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			wordListSizes.at(guessNumber) += reducedWordList.size();
 
 
-				randNum = getRandomInt(0, reducedWordList.size() - 1);
-				prevGuess = reducedWordList.at(randNum);
+			randNum = getRandomInt(0, reducedWordList.size() - 1);
+			prevGuess = reducedWordList.at(randNum);
 
 			prevResult = game->guess(prevGuess);
 			guessNumber++;
-			//std::cout << prevResult << std::endl;		//
-			//std::cout << prevGuess << std::endl;		   //
 		}
+
 		if (game->isWon())
 		{
 			timesWon++;
@@ -71,11 +61,11 @@ public:
 	{
 		std::string temp;
 		std::vector <std::string> output;
-			for (auto i: wordList)
-			{
-				if (!containsLetterFromBlackList(i))
-					output.push_back(i);
-			}
+		for (auto i : wordList)
+		{
+			if (!containsLetterFromBlackList(i))
+				output.push_back(i);
+		}
 		return output;
 	}
 
@@ -88,7 +78,6 @@ public:
 					return true;
 		}
 		return false;
-
 	}
 
 private:

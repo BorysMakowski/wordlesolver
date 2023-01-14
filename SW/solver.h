@@ -4,6 +4,13 @@
 class Solver
 {
 public:
+	Solver(std::vector <std::string> _wordList)
+	{
+		wordList = _wordList;
+	};
+
+	virtual ~Solver() {};
+
 	virtual void solve(Game* game) = 0;
 
 	/*
@@ -35,6 +42,6 @@ protected:
 	int timesLost = 0;
 	std::vector<int> wordListSizes{ 0,0,0,0,0,0,0 };
 	std::vector<int> wonAtGuess{ 0,0,0,0,0,0,0 };
-	std::vector <std::string> wordList = propagateWordList();
+	std::vector <std::string> wordList;
 
 };

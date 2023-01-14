@@ -9,36 +9,27 @@
 class SolverMatchPatternA : public Solver
 {
 public:
-	SolverMatchPatternA()
+	SolverMatchPatternA(std::vector <std::string> _wordList) :Solver(_wordList)
 	{
-		std::cout << "SolverMatchPatternA constructor called" << std::endl;
+		//std::cout << "SolverMatchPatternA constructor called" << std::endl;
 	};
+	virtual ~SolverMatchPatternA() {};
+
 
 	void solve(Game* game)
 	{
 		requiredLetters.clear();
 		resetPattern();
-		//showPattern();
 
 		reducedWordList = wordList;
+		wordListSizes.at(0) += reducedWordList.size();
 		//guess first word at random
 		int randNum = getRandomInt(0, reducedWordList.size() - 1);
 		prevGuess = reducedWordList.at(randNum);
 		prevResult = game->guess(prevGuess);
 		int guessNumber = 1;
 
-		////DUCK
-		//std::cout << std::endl;
-		//std::cout << std::endl;
-		//std::cout << std::endl;
-		//std::cout << std::endl;
-		//std::cout << "=====" << std::endl;//DUCK
 
-		//std::cout << game->getSolution() << std::endl;//DUCK
-		//std::cout << "=====" << std::endl;//DUCK
-		//std::cout << prevResult << std::endl;		//DUCK
-		//std::cout << prevGuess << std::endl;		   //DUCK
-		////DUCK
 		while (!game->isFinished() && !game->isWon())
 		{
 			for (int i = 0; i < 5; ++i)
@@ -64,21 +55,17 @@ public:
 				}
 
 			}
-			//showPattern();
 
 
-			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			reducedWordList = applyPattern();
-			//std::cout << "wordlist size: " << reducedWordList.size() << std::endl;
 			wordListSizes.at(guessNumber) += reducedWordList.size();
 
 			randNum = getRandomInt(0, reducedWordList.size() - 1);
 			prevGuess = reducedWordList.at(randNum);
 			prevResult = game->guess(prevGuess);
 			guessNumber++;
-			//std::cout << prevResult << std::endl;		//
-			//std::cout << prevGuess << std::endl;		   //
 		}
+
 		if (game->isWon())
 		{
 			timesWon++;
@@ -86,14 +73,12 @@ public:
 		}
 		else
 			timesLost++;
-
-
-		//std::cout << "////////////////////////////////////////////////////" << std::endl;
 	}
 
 	/*
 	// HELPER FUNCTIONS
 	*/
+
 	void showPattern()
 	{
 		for (int i = 0; i < 5; ++i)
@@ -137,19 +122,19 @@ public:
 	bool matchesPattern(std::string word)
 	{
 
-			for (int i = 0; i < 5; ++i)
-			{
-				if (!(std::find(pattern[i].begin(), pattern[i].end(), word[i]) != pattern[i].end()))
-					return false;
-			}
-		
+		for (int i = 0; i < 5; ++i)
+		{
+			if (!(std::find(pattern[i].begin(), pattern[i].end(), word[i]) != pattern[i].end()))
+				return false;
+		}
+
 		return true;
 	}
 
 	bool containsRequiredLetters(std::string word)
 	{
 		std::vector<int>counts;
-		for (int i = 0; i < requiredLetters.size(); ++i)
+		for (unsigned int i = 0; i < requiredLetters.size(); ++i)
 		{
 			counts.push_back(0);
 			for (int j = 0; j < 5; j++)
