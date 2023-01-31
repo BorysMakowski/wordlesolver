@@ -59,5 +59,15 @@ void play(std::vector <std::string> wordList) //play in console
 	std::cout << game.getSolution() << std::endl;
 }
 
+void reduceWordList(std::vector <std::string>& wordList, int finalSize)
+{
+	if (wordList.size() > finalSize && finalSize > 5)
+		while (wordList.size() > finalSize)
+		{
+			std::swap(wordList[getRandomInt(0, wordList.size())], wordList.back());
+			wordList.pop_back();
+		}
+}
+
 
 

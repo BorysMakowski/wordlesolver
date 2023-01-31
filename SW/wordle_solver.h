@@ -19,6 +19,8 @@ void test(Solver* solver, std::ofstream& file, int timesToRun, std::vector <std:
 //play in console
 void play(std::vector <std::string> wordList);
 
+void reduceWordList(std::vector <std::string>& wordList, int finalSize);
+
 
 
 
