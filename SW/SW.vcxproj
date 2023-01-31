@@ -139,7 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="brute_solver.cpp" />
+    <ClCompile Include="brute_solver_no_repeat.cpp" />
+    <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="solver.cpp" />
+    <ClCompile Include="solver_a.cpp" />
+    <ClCompile Include="solver_b.cpp" />
+    <ClCompile Include="solver_c.cpp" />
+    <ClCompile Include="solver_match_pattern_a.cpp" />
+    <ClCompile Include="solver_match_pattern_b.cpp" />
+    <ClCompile Include="solver_match_pattern_c.cpp" />
+    <ClCompile Include="tools.cpp" />
+    <ClCompile Include="wordle_solver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="brute_solver.h" />

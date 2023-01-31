@@ -4,13 +4,13 @@ int main()
 {
 	std::vector <std::string> wordList = propagateWordList();
 	std::ofstream results("results.txt");
-	int timesToRun = 100;
+	int timesToRun = 10;
 
 	auto globalStart = std::chrono::system_clock::now();
 	//std::ofstream results("results.txt", std::ios_base::app); //append instead of overwrite
 
-	test(new BruteSolver(wordList), results, timesToRun, wordList);
-	test(new BruteSolverNoRepeat(wordList), results, timesToRun, wordList);
+	test(new BruteSolver(wordList), results, timesToRun, wordList, true);
+	test(new BruteSolverNoRepeat(wordList), results, timesToRun, wordList, true);
 	test(new SolverA(wordList), results, timesToRun, wordList);
 	test(new SolverB(wordList), results, timesToRun, wordList);
 	test(new SolverC(wordList), results, timesToRun, wordList);

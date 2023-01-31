@@ -4,12 +4,9 @@
 class Solver
 {
 public:
-	Solver(std::vector <std::string> _wordList)
-	{
-		wordList = _wordList;
-	};
+	Solver(std::vector <std::string> _wordList);
 
-	virtual ~Solver() {};
+	virtual ~Solver();
 
 	virtual void solve(Game* game) = 0;
 
@@ -17,31 +14,19 @@ public:
 	// SETTERS, GETTERS
 	*/
 
-	int getTimesWon()
-	{
-		return timesWon;
-	}
+	int getTimesWon();
 
-	int getTimesLost()
-	{
-		return timesLost;
-	}
+	int getTimesLost();
 
-	std::vector<int> getWordListSizes()
-	{
-		return wordListSizes;
-	}
+	std::vector<unsigned int> getWordListSizes();
 
-	std::vector<int> getWonAtGuess()
-	{
-		return wonAtGuess;
-	}
+	std::vector<int> getWonAtGuess();
 
 protected:
-	int timesWon = 0;
-	int timesLost = 0;
-	std::vector<int> wordListSizes{ 0,0,0,0,0,0,0 };
-	std::vector<int> wonAtGuess{ 0,0,0,0,0,0,0 };
+	int timesWon;
+	int timesLost;
+	std::vector<unsigned int> wordListSizes;
+	std::vector<int> wonAtGuess;
 	std::vector <std::string> wordList;
 
 };

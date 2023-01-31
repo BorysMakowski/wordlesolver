@@ -1,7 +1,7 @@
 class BruteSolver
-number of attempts: 100
-times won: 0, times lost: 100
-job took 0.11832seconds
+number of attempts: 10
+times won: 0, times lost: 10
+job took 0.0244702seconds
 mean Wordlist size after attempt 0: 15920
 mean Wordlist size after attempt 1: 15920
 mean Wordlist size after attempt 2: 15920
@@ -17,9 +17,9 @@ Won at guess: 5: 0
 Won at guess: 6: 0
 
 class BruteSolverNoRepeat
-number of attempts: 100
-times won: 0, times lost: 100
-job took 0.120999seconds
+number of attempts: 10
+times won: 0, times lost: 10
+job took 0.0095971seconds
 mean Wordlist size after attempt 0: 15920
 mean Wordlist size after attempt 1: 15919
 mean Wordlist size after attempt 2: 15918
@@ -35,111 +35,111 @@ Won at guess: 5: 0
 Won at guess: 6: 0
 
 class SolverA
-number of attempts: 100
-times won: 4, times lost: 96
-job took 0.458789seconds
+number of attempts: 10
+times won: 0, times lost: 10
+job took 0.0362302seconds
 mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 6551.63
-mean Wordlist size after attempt 2: 2600.62
-mean Wordlist size after attempt 3: 1007.67
-mean Wordlist size after attempt 4: 422.6
-mean Wordlist size after attempt 5: 226.88
+mean Wordlist size after attempt 1: 6694.4
+mean Wordlist size after attempt 2: 2473.2
+mean Wordlist size after attempt 3: 833
+mean Wordlist size after attempt 4: 349.6
+mean Wordlist size after attempt 5: 198.8
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 0
+Won at guess: 4: 0
+Won at guess: 5: 0
+Won at guess: 6: 0
+
+class SolverB
+number of attempts: 10
+times won: 2, times lost: 8
+job took 0.0530605seconds
+mean Wordlist size after attempt 0: 15920
+mean Wordlist size after attempt 1: 2124.1
+mean Wordlist size after attempt 2: 402.9
+mean Wordlist size after attempt 3: 129.1
+mean Wordlist size after attempt 4: 52.1
+mean Wordlist size after attempt 5: 30.7
 Won at guess: 0: 0
 Won at guess: 1: 0
 Won at guess: 2: 0
 Won at guess: 3: 0
 Won at guess: 4: 1
 Won at guess: 5: 1
-Won at guess: 6: 2
+Won at guess: 6: 0
 
-class SolverB
-number of attempts: 100
-times won: 13, times lost: 87
-job took 1.0247seconds
+class SolverC
+number of attempts: 10
+times won: 5, times lost: 5
+job took 0.0517098seconds
 mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 2112.35
-mean Wordlist size after attempt 2: 404.25
-mean Wordlist size after attempt 3: 130.1
-mean Wordlist size after attempt 4: 56.78
-mean Wordlist size after attempt 5: 30.24
+mean Wordlist size after attempt 1: 2566
+mean Wordlist size after attempt 2: 240.1
+mean Wordlist size after attempt 3: 40.4
+mean Wordlist size after attempt 4: 5.1
+mean Wordlist size after attempt 5: 3.5
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 1
+Won at guess: 4: 0
+Won at guess: 5: 4
+Won at guess: 6: 0
+
+class SolverMatchPatternA
+number of attempts: 10
+times won: 9, times lost: 1
+job took 0.0412607seconds
+mean Wordlist size after attempt 0: 15920
+mean Wordlist size after attempt 1: 1402.7
+mean Wordlist size after attempt 2: 118.6
+mean Wordlist size after attempt 3: 31.9
+mean Wordlist size after attempt 4: 11.1
+mean Wordlist size after attempt 5: 2.7
 Won at guess: 0: 0
 Won at guess: 1: 0
 Won at guess: 2: 0
 Won at guess: 3: 2
-Won at guess: 4: 2
-Won at guess: 5: 1
-Won at guess: 6: 8
-
-class SolverC
-number of attempts: 100
-times won: 60, times lost: 40
-job took 0.669971seconds
-mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 1649.16
-mean Wordlist size after attempt 2: 268.98
-mean Wordlist size after attempt 3: 57.17
-mean Wordlist size after attempt 4: 16.26
-mean Wordlist size after attempt 5: 6.39
-Won at guess: 0: 0
-Won at guess: 1: 0
-Won at guess: 2: 0
-Won at guess: 3: 5
-Won at guess: 4: 4
-Won at guess: 5: 25
-Won at guess: 6: 26
-
-class SolverMatchPatternA
-number of attempts: 100
-times won: 88, times lost: 12
-job took 0.315317seconds
-mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 1672.9
-mean Wordlist size after attempt 2: 166.19
-mean Wordlist size after attempt 3: 17.63
-mean Wordlist size after attempt 4: 2.84
-mean Wordlist size after attempt 5: 0.83
-Won at guess: 0: 0
-Won at guess: 1: 0
-Won at guess: 2: 2
-Won at guess: 3: 5
-Won at guess: 4: 28
-Won at guess: 5: 33
-Won at guess: 6: 20
+Won at guess: 4: 0
+Won at guess: 5: 3
+Won at guess: 6: 4
 
 class SolverMatchPatternB
-number of attempts: 100
-times won: 83, times lost: 17
-job took 3.23098seconds
+number of attempts: 10
+times won: 8, times lost: 2
+job took 0.331069seconds
 mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 443.77
-mean Wordlist size after attempt 2: 33.38
-mean Wordlist size after attempt 3: 6.58
-mean Wordlist size after attempt 4: 2.87
-mean Wordlist size after attempt 5: 1.31
-Won at guess: 0: 0
-Won at guess: 1: 0
-Won at guess: 2: 2
-Won at guess: 3: 14
-Won at guess: 4: 27
-Won at guess: 5: 25
-Won at guess: 6: 15
-
-class SolverMatchPatternC
-number of attempts: 100
-times won: 80, times lost: 20
-job took 3.85116seconds
-mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 3226.79
-mean Wordlist size after attempt 2: 615.91
-mean Wordlist size after attempt 3: 88.08
-mean Wordlist size after attempt 4: 11.96
-mean Wordlist size after attempt 5: 1.68
+mean Wordlist size after attempt 1: 543.3
+mean Wordlist size after attempt 2: 13.1
+mean Wordlist size after attempt 3: 2.5
+mean Wordlist size after attempt 4: 1.1
+mean Wordlist size after attempt 5: 0.7
 Won at guess: 0: 0
 Won at guess: 1: 0
 Won at guess: 2: 0
-Won at guess: 3: 5
-Won at guess: 4: 14
-Won at guess: 5: 39
-Won at guess: 6: 22
+Won at guess: 3: 1
+Won at guess: 4: 5
+Won at guess: 5: 2
+Won at guess: 6: 0
 
-whole job took: 9.81175seconds
+class SolverMatchPatternC
+number of attempts: 10
+times won: 6, times lost: 4
+job took 0.429663seconds
+mean Wordlist size after attempt 0: 15920
+mean Wordlist size after attempt 1: 3543.3
+mean Wordlist size after attempt 2: 886.8
+mean Wordlist size after attempt 3: 140.9
+mean Wordlist size after attempt 4: 19.4
+mean Wordlist size after attempt 5: 5.6
+Won at guess: 0: 0
+Won at guess: 1: 0
+Won at guess: 2: 0
+Won at guess: 3: 0
+Won at guess: 4: 0
+Won at guess: 5: 2
+Won at guess: 6: 4
+
+whole job took: 0.987765seconds
