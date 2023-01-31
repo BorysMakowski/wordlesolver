@@ -2,7 +2,7 @@
 #include "solver_c.h"
 
 
-SolverC::SolverC(std::vector <std::string> _wordList) :Solver(_wordList)
+SolverC::SolverC(std::vector <std::string> _wordList) :SolverB(_wordList)
 	{
 		knownLetters = "-----";
 		prevResult = "";
@@ -102,34 +102,6 @@ SolverC::~SolverC() {};
 		return true;
 	}
 
-	bool SolverC::containsLetterFromBlackList(std::string word)
-	{
-		for (int i = 0; i < 5; i++)
-		{
-			for (auto j : lettersBlackList)
-				if (word[i] == j)
-					return true;
-		}
-		return false;
-	}
 
-	bool SolverC::containsLettersFromWhiteList(std::string word)
-	{
-		std::vector<int>counts;
-		for (unsigned int i = 0; i < lettersWhiteList.size(); ++i)
-		{
-			counts.push_back(0);
-			for (int j = 0; j < 5; j++)
-			{
-				if (word[j] == lettersWhiteList.at(i))
-				{
-					counts.at(i)++;
-				}
-			}
-		}
-		for (auto i : counts)
-			if (i == 0)
-				return false;
-		return true;
-	}
+
 

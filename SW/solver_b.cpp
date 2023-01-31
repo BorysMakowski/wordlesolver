@@ -76,17 +76,6 @@ SolverB::SolverB(std::vector <std::string> _wordList) :SolverA(_wordList)
 		return output;
 	}
 
-	//bool SolverB::containsLetterFromBlackList(std::string word)
-	//{
-	//	for (int i = 0; i < 5; i++)
-	//	{
-	//		for (auto j : lettersBlackList)
-	//			if (word[i] == j)
-	//				return true;
-	//	}
-	//	return false;
-	//}
-
 	bool SolverB::containsLettersFromWhiteList(std::string word)
 	{
 		std::vector<int>counts;

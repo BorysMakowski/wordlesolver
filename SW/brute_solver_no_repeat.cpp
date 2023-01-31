@@ -1,7 +1,7 @@
 #pragma once
 #include "brute_solver_no_repeat.h"
 
-BruteSolverNoRepeat::BruteSolverNoRepeat(std::vector <std::string> _wordList) :Solver(_wordList){};
+BruteSolverNoRepeat::BruteSolverNoRepeat(std::vector <std::string> _wordList) :BruteSolver(_wordList){};
 BruteSolverNoRepeat::~BruteSolverNoRepeat() {};
 
 	void BruteSolverNoRepeat::solve(Game* game)

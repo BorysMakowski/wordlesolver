@@ -1,7 +1,7 @@
 #pragma once
-#include "solver.h"
+#include "solver_b.h"
 
-class SolverC : public Solver
+class SolverC : public SolverB
 {
 public:
 	SolverC(std::vector <std::string> _wordList);
@@ -11,17 +11,10 @@ public:
 
 	std::vector <std::string> propagateReducedWordList();
 	bool matchesKnownLetters(std::string word);
-	bool containsLetterFromBlackList(std::string word);
-	bool containsLettersFromWhiteList(std::string word);
 
 private:
 	std::string knownLetters;
-	std::vector<int>counts;
-	std::vector <char> lettersBlackList;
-	std::vector <char> lettersWhiteList;
 	std::vector <std::string> reducedWordList;
-	std::string prevResult;
-	std::string prevGuess;
 };
 
 

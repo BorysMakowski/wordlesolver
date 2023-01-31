@@ -10,16 +10,11 @@ public:
 	void solve(Game* game);
 
 	std::vector <std::string> propagateWordListConsiderBlackListAndWhiteList();
-	//bool containsLetterFromBlackList(std::string word);
 	bool containsLettersFromWhiteList(std::string word);
 
-private:
+protected:
 	std::vector<int> counts;
-	//std::vector <char> lettersBlackList;
 	std::vector <char> lettersWhiteList;
-	//std::vector <std::string> reducedWordList;
-	//std::string prevResult;
-	//std::string prevGuess;
 };
 
 

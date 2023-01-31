@@ -1,7 +1,7 @@
 #pragma once
-#include "solver.h"
+#include "brute_solver.h"
 
-class BruteSolverNoRepeat : public Solver
+class BruteSolverNoRepeat : public BruteSolver
 {
 public:
 	BruteSolverNoRepeat(std::vector <std::string> _wordList);
