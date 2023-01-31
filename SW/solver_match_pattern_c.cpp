@@ -24,7 +24,7 @@ bool customSorterAsc(std::string lhs, std::string rhs)
 }
 
 
-SolverMatchPatternC::SolverMatchPatternC(std::vector <std::string> _wordList) :Solver(_wordList)
+SolverMatchPatternC::SolverMatchPatternC(std::vector <std::string> _wordList) :SolverMatchPatternB(_wordList)
 	{
 		prevResult = "";
 		prevGuess = "";
@@ -86,89 +86,6 @@ SolverMatchPatternC::~SolverMatchPatternC() {};
 		}
 		else
 			timesLost++;
-	}
-
-	/*
-	// HELPER FUNCTIONS
-	*/
-	void SolverMatchPatternC::showPattern()
-	{
-		for (int i = 0; i < 5; ++i)
-		{
-			std::cout << "[" << i << "]: ";
-			for (auto j : pattern[i])
-				std::cout << j;
-			std::cout << std::endl;
-		}
-	}
-
-	void SolverMatchPatternC::resetPattern()
-	{
-		for (int i = 0; i < 5; ++i)
-		{
-			pattern[i].clear();
-			for (int j = 97; j < 123; ++j)
-				pattern[i].push_back((char)j);
-		}
-	}
-
-	std::vector <std::string> SolverMatchPatternC::applyPattern()
-	{
-		std::vector <std::string> output;
-		for (auto i : wordList)
-		{
-			if (matchesPattern(i) && containsRequiredLetters(i))
-			{
-				output.push_back(i);
-			}
-		}
-		return output;
-	}
-
-	void SolverMatchPatternC::removeFromPattern(char letter)
-	{
-		for (int i = 0; i < 5; ++i)
-			pattern[i].erase(std::remove(pattern[i].begin(), pattern[i].end(), letter), pattern[i].end());
-	}
-
-	bool SolverMatchPatternC::matchesPattern(std::string word)
-	{
-
-		for (int i = 0; i < 5; ++i)
-		{
-			if (!(std::find(pattern[i].begin(), pattern[i].end(), word[i]) != pattern[i].end()))
-				return false;
-		}
-
-		return true;
-	}
-
-	bool SolverMatchPatternC::containsRequiredLetters(std::string word)
-	{
-		std::vector<int>counts;
-		for (unsigned int i = 0; i < requiredLetters.size(); ++i)
-		{
-			counts.push_back(0);
-			for (int j = 0; j < 5; j++)
-			{
-				if (word[j] == requiredLetters.at(i))
-				{
-					counts.at(i)++;
-				}
-			}
-		}
-		for (auto i : counts)
-			if (i == 0)
-				return false;
-		return true;
-	}
-
-	bool SolverMatchPatternC::uniqueLetters(std::string word)
-	{
-		std::set<char> wordSet;
-		for (auto i : word)
-			wordSet.insert(i);
-		return wordSet.size() == word.size();
 	}
 
 
