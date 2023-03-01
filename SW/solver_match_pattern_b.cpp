@@ -1,26 +1,5 @@
 #include "solver_match_pattern_b.h"
 
-bool customSorter(std::string lhs, std::string rhs)
-{
-	const std::vector <char> mostCommonLetters{ 'a','e','s','o','r','i','l','t','n','u','d','c','y','m','p','h','b','g','k','f','w','v','z','j','x','q' };
-	std::set<int> lhsScore;
-	std::set<int> rhsScore;
-
-
-	for (int i = 0; i < 5; ++i)
-	{
-		for (int j = 0; j < 26; ++j)
-		{
-			if (lhs[i] == mostCommonLetters.at(j))
-				lhsScore.insert(26 - j);
-			if (rhs[i] == mostCommonLetters.at(j))
-				rhsScore.insert(26 - j);
-		}
-	}
-	int lhsSum = std::accumulate(lhsScore.begin(), lhsScore.end(), 0);
-	int rhsSum = std::accumulate(rhsScore.begin(), rhsScore.end(), 0);
-	return (lhsSum > rhsSum);
-}
 
 SolverMatchPatternB::SolverMatchPatternB(std::vector <std::string> _wordList) :SolverMatchPatternA(_wordList)
 	{
@@ -85,25 +64,26 @@ void SolverMatchPatternB::solve(Game* game)
 		timesLost++;
 }
 
-std::vector <std::string> SolverMatchPatternB::applyPattern()
+bool SolverMatchPatternB::customSorter(std::string lhs, std::string rhs)
 {
-	std::vector <std::string> output;
-	for (auto i : wordList)
+	const std::vector <char> mostCommonLetters{ 'a','e','s','o','r','i','l','t','n','u','d','c','y','m','p','h','b','g','k','f','w','v','z','j','x','q' };
+	std::set<int> lhsScore;
+	std::set<int> rhsScore;
+
+
+	for (int i = 0; i < 5; ++i)
 	{
-		if (matchesPattern(i) && containsRequiredLetters(i))
+		for (int j = 0; j < 26; ++j)
 		{
-			output.push_back(i);
+			if (lhs[i] == mostCommonLetters.at(j))
+				lhsScore.insert(26 - j);
+			if (rhs[i] == mostCommonLetters.at(j))
+				rhsScore.insert(26 - j);
 		}
 	}
-	return output;
-}
-
-bool SolverMatchPatternB::uniqueLetters(std::string word)
-{
-	std::set<char> wordSet;
-	for (auto i : word)
-		wordSet.insert(i);
-	return wordSet.size() == word.size();
+	int lhsSum = std::accumulate(lhsScore.begin(), lhsScore.end(), 0);
+	int rhsSum = std::accumulate(rhsScore.begin(), rhsScore.end(), 0);
+	return (lhsSum > rhsSum);
 }
 
 

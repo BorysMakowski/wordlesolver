@@ -29,7 +29,7 @@ SolverA::~SolverA() {};
 					lettersBlackList.push_back(prevGuess[i]);
 			}
 
-			reducedWordList = propagateWordListConsiderBlacklist();
+			reducedWordList = propagateWordListConsiderBlackList();
 			wordListSizes.at(guessNumber) += reducedWordList.size();
 
 
@@ -53,7 +53,7 @@ SolverA::~SolverA() {};
 	// HELPER FUNCTIONS
 	*/
 
-	std::vector <std::string> SolverA::propagateWordListConsiderBlacklist()
+	std::vector <std::string> SolverA::propagateWordListConsiderBlackList()
 	{
 		std::string temp;
 		std::vector <std::string> output;

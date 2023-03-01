@@ -9,7 +9,7 @@ public:
 
 	void solve(Game* game);
 
-	std::vector <std::string> propagateWordListConsiderBlacklist();
+	std::vector <std::string> propagateWordListConsiderBlackList();
 	bool containsLetterFromBlackList(std::string word);
 
 protected:

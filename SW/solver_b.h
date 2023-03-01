@@ -13,7 +13,7 @@ public:
 	bool containsLettersFromWhiteList(std::string word);
 
 protected:
-	std::vector<int> counts;
+	//std::vector<int> counts;
 	std::vector <char> lettersWhiteList;
 };
 

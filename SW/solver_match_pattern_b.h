@@ -1,7 +1,6 @@
 #pragma once
 #include "solver_match_pattern_a.h"
 
-bool customSorter(std::string lhs, std::string rhs);
 
 class SolverMatchPatternB : public SolverMatchPatternA
 {
@@ -10,9 +9,8 @@ public:
 	virtual ~SolverMatchPatternB();
 
 	void solve(Game* game);
-
-	std::vector <std::string> applyPattern();
-	bool uniqueLetters(std::string word);
+	static bool customSorter(std::string lhs, std::string rhs);
+	/*bool uniqueLetters(std::string word);*/
 };
 
 
