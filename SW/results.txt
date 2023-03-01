@@ -1,7 +1,7 @@
 class BruteSolver
 number of attempts: 1000
 times won: 0, times lost: 1000
-job took 3.49528seconds
+job took 3.60526seconds
 mean Wordlist size after attempt 0: 15920
 mean Wordlist size after attempt 1: 15920
 mean Wordlist size after attempt 2: 15920
@@ -18,8 +18,8 @@ Won at guess: 6: 0
 
 class BruteSolverNoRepeat
 number of attempts: 1000
-times won: 1, times lost: 999
-job took 1.50071seconds
+times won: 0, times lost: 1000
+job took 1.5192seconds
 mean Wordlist size after attempt 0: 15920
 mean Wordlist size after attempt 1: 15919
 mean Wordlist size after attempt 2: 15918
@@ -31,115 +31,115 @@ Won at guess: 1: 0
 Won at guess: 2: 0
 Won at guess: 3: 0
 Won at guess: 4: 0
-Won at guess: 5: 1
+Won at guess: 5: 0
 Won at guess: 6: 0
 
 class SolverA
 number of attempts: 1000
-times won: 29, times lost: 971
-job took 5.05939seconds
+times won: 23, times lost: 977
+job took 4.14679seconds
 mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 6078.01
-mean Wordlist size after attempt 2: 2347.72
-mean Wordlist size after attempt 3: 955.444
-mean Wordlist size after attempt 4: 436.415
-mean Wordlist size after attempt 5: 229.435
+mean Wordlist size after attempt 1: 6049.56
+mean Wordlist size after attempt 2: 2363.68
+mean Wordlist size after attempt 3: 968.86
+mean Wordlist size after attempt 4: 445.257
+mean Wordlist size after attempt 5: 228.579
 Won at guess: 0: 0
 Won at guess: 1: 0
-Won at guess: 2: 1
+Won at guess: 2: 0
 Won at guess: 3: 0
 Won at guess: 4: 1
-Won at guess: 5: 11
-Won at guess: 6: 16
+Won at guess: 5: 4
+Won at guess: 6: 18
 
 class SolverB
 number of attempts: 1000
-times won: 173, times lost: 827
-job took 10.4035seconds
+times won: 171, times lost: 829
+job took 6.82022seconds
 mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 2050.67
-mean Wordlist size after attempt 2: 395.145
-mean Wordlist size after attempt 3: 123.335
-mean Wordlist size after attempt 4: 52.265
-mean Wordlist size after attempt 5: 28.843
+mean Wordlist size after attempt 1: 2037.11
+mean Wordlist size after attempt 2: 407.743
+mean Wordlist size after attempt 3: 120.142
+mean Wordlist size after attempt 4: 53.141
+mean Wordlist size after attempt 5: 27.994
 Won at guess: 0: 0
 Won at guess: 1: 0
-Won at guess: 2: 3
-Won at guess: 3: 7
-Won at guess: 4: 41
-Won at guess: 5: 52
-Won at guess: 6: 70
+Won at guess: 2: 2
+Won at guess: 3: 13
+Won at guess: 4: 31
+Won at guess: 5: 58
+Won at guess: 6: 67
 
 class SolverC
 number of attempts: 1000
-times won: 628, times lost: 372
-job took 10.238seconds
+times won: 570, times lost: 430
+job took 6.51608seconds
 mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 1709.62
-mean Wordlist size after attempt 2: 228.97
-mean Wordlist size after attempt 3: 51.076
-mean Wordlist size after attempt 4: 13.02
-mean Wordlist size after attempt 5: 4.732
+mean Wordlist size after attempt 1: 1802.96
+mean Wordlist size after attempt 2: 251.817
+mean Wordlist size after attempt 3: 50.048
+mean Wordlist size after attempt 4: 14.359
+mean Wordlist size after attempt 5: 4.95
 Won at guess: 0: 0
 Won at guess: 1: 0
-Won at guess: 2: 1
-Won at guess: 3: 38
-Won at guess: 4: 131
-Won at guess: 5: 233
-Won at guess: 6: 225
+Won at guess: 2: 3
+Won at guess: 3: 34
+Won at guess: 4: 100
+Won at guess: 5: 193
+Won at guess: 6: 240
 
 class SolverMatchPatternA
 number of attempts: 1000
-times won: 822, times lost: 178
-job took 4.09235seconds
+times won: 853, times lost: 147
+job took 4.79026seconds
 mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 1508.57
-mean Wordlist size after attempt 2: 146.236
-mean Wordlist size after attempt 3: 17.83
-mean Wordlist size after attempt 4: 4.089
-mean Wordlist size after attempt 5: 1.291
+mean Wordlist size after attempt 1: 1523.01
+mean Wordlist size after attempt 2: 143.136
+mean Wordlist size after attempt 3: 16.543
+mean Wordlist size after attempt 4: 3.855
+mean Wordlist size after attempt 5: 1.224
 Won at guess: 0: 0
 Won at guess: 1: 0
-Won at guess: 2: 10
-Won at guess: 3: 85
-Won at guess: 4: 234
-Won at guess: 5: 290
-Won at guess: 6: 203
+Won at guess: 2: 4
+Won at guess: 3: 98
+Won at guess: 4: 242
+Won at guess: 5: 304
+Won at guess: 6: 205
 
 class SolverMatchPatternB
 number of attempts: 1000
-times won: 853, times lost: 147
-job took 38.7373seconds
+times won: 872, times lost: 128
+job took 36.2349seconds
 mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 449.533
-mean Wordlist size after attempt 2: 33.29
-mean Wordlist size after attempt 3: 7.035
-mean Wordlist size after attempt 4: 2.681
-mean Wordlist size after attempt 5: 1.086
+mean Wordlist size after attempt 1: 446.771
+mean Wordlist size after attempt 2: 31.597
+mean Wordlist size after attempt 3: 6.176
+mean Wordlist size after attempt 4: 2.323
+mean Wordlist size after attempt 5: 0.97
 Won at guess: 0: 0
 Won at guess: 1: 0
-Won at guess: 2: 15
-Won at guess: 3: 112
-Won at guess: 4: 301
-Won at guess: 5: 291
-Won at guess: 6: 134
+Won at guess: 2: 12
+Won at guess: 3: 140
+Won at guess: 4: 330
+Won at guess: 5: 255
+Won at guess: 6: 135
 
 class SolverMatchPatternC
 number of attempts: 1000
-times won: 762, times lost: 238
-job took 45.4548seconds
+times won: 713, times lost: 287
+job took 43.0701seconds
 mean Wordlist size after attempt 0: 15920
-mean Wordlist size after attempt 1: 3233.48
-mean Wordlist size after attempt 2: 638.146
-mean Wordlist size after attempt 3: 104.813
-mean Wordlist size after attempt 4: 14.232
-mean Wordlist size after attempt 5: 2.364
+mean Wordlist size after attempt 1: 3296.16
+mean Wordlist size after attempt 2: 688.171
+mean Wordlist size after attempt 3: 116.319
+mean Wordlist size after attempt 4: 14.881
+mean Wordlist size after attempt 5: 2.792
 Won at guess: 0: 0
 Won at guess: 1: 0
-Won at guess: 2: 9
-Won at guess: 3: 54
-Won at guess: 4: 137
-Won at guess: 5: 251
-Won at guess: 6: 311
+Won at guess: 2: 3
+Won at guess: 3: 35
+Won at guess: 4: 130
+Won at guess: 5: 254
+Won at guess: 6: 291
 
-whole job took: 119.001seconds
+whole job took: 106.721seconds

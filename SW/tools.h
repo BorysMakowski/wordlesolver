@@ -8,6 +8,6 @@
 #include <iostream>
 #include <numeric>
 
-std::vector <std::string> propagateWordList();
+std::vector <std::string> propagateWordList(std::string file_path = "words_alpha.txt");
 
 int getRandomInt(int lowest, int highest);

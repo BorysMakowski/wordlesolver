@@ -1,10 +1,10 @@
 #include "tools.h"
 
-std::vector <std::string> propagateWordList()
+std::vector <std::string> propagateWordList(std::string file_path)
 {
 	std::vector <std::string> wordList;
 	std::string temp;
-	std::ifstream wordFile("words_alpha.txt");
+	std::ifstream wordFile(file_path);
 	if (wordFile.is_open())
 	{
 		while (getline(wordFile, temp))
