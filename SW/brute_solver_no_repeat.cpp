@@ -34,10 +34,10 @@ BruteSolverNoRepeat::~BruteSolverNoRepeat() {};
 	// HELPER FUNCTIONS
 	*/
 
-	bool BruteSolverNoRepeat::wasTried(int in)
+	bool BruteSolverNoRepeat::wasTried(int wordNum)
 	{
 		for (auto i : triedWords)
-			if (i == in)
+			if (i == wordNum)
 				return true;
 		return false;
 	}

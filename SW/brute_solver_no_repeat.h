@@ -13,7 +13,7 @@ public:
 	// HELPER FUNCTIONS
 	*/
 
-	bool wasTried(int in);
+	bool wasTried(int wordNum);
 
 private:
 	std::vector <int> triedWords;
