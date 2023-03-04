@@ -27,7 +27,7 @@ int Solver::getTimesLost()
 	return timesLost;
 }
 
-std::vector<unsigned int> Solver::getWordListSizes()
+std::vector<long long> Solver::getWordListSizes()
 {
 	return wordListSizes;
 }

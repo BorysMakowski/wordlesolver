@@ -29,7 +29,7 @@ void test(Solver* solver, std::ofstream& file, int timesToRun, std::vector <std:
 	file << "number of attempts: " << timesToRun << std::endl;
 	file << "times won: " << solver->getTimesWon() << ", times lost: " << solver->getTimesLost() << std::endl;
 	file << "job took " << time.count() << "seconds" << std::endl;
-	std::vector<unsigned int> wordListSizes = solver->getWordListSizes();
+	std::vector<long long> wordListSizes = solver->getWordListSizes();
 	std::vector<int> wonAtGuess = solver->getWonAtGuess();
 
 	for (int i = 0; i < 6; ++i)

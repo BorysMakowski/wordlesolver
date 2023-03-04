@@ -18,14 +18,14 @@ public:
 
 	int getTimesLost();
 
-	std::vector<unsigned int> getWordListSizes();
+	std::vector<long long> getWordListSizes();
 
 	std::vector<int> getWonAtGuess();
 
 protected:
 	int timesWon;
 	int timesLost;
-	std::vector<unsigned int> wordListSizes;
+	std::vector<long long> wordListSizes;
 	std::vector<int> wonAtGuess;
 	std::vector <std::string> wordList;
 

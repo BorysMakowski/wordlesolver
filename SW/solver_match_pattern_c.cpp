@@ -66,8 +66,7 @@ void SolverMatchPatternC::solve(Game* game)
 
 bool SolverMatchPatternC::customSorterAsc(std::string lhs, std::string rhs)
 {
-	std::vector <char> mostCommonLetters{ 'a','e','s','o','r','i','l','t','n','u','d','c','y','m','p','h','b','g','k','f','w','v','z','j','x','q' };
-	std::reverse(mostCommonLetters.begin(), mostCommonLetters.end());
+	const std::vector <char> leastCommonLetters{'q','x','j','z','v','w','f','k','g','b','h','p','m','y','c','d','u','n','t','l','i','r','o','s','e','a' };
 	std::set<int> lhsScore;
 	std::set<int> rhsScore;
 
@@ -76,9 +75,9 @@ bool SolverMatchPatternC::customSorterAsc(std::string lhs, std::string rhs)
 	{
 		for (int j = 0; j < 26; ++j)
 		{
-			if (lhs[i] == mostCommonLetters.at(j))
+			if (lhs[i] == leastCommonLetters.at(j))
 				lhsScore.insert(26 - j);
-			if (rhs[i] == mostCommonLetters.at(j))
+			if (rhs[i] == leastCommonLetters.at(j))
 				rhsScore.insert(26 - j);
 		}
 	}
