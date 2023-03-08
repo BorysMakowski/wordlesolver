@@ -7,7 +7,7 @@ BruteSolverNoRepeat::~BruteSolverNoRepeat() {};
 	void BruteSolverNoRepeat::solve(Game* game)
 	{
 		for (int i = 0; i < 6; ++i)
-			wordListSizes.at(i) += (wordList.size() - i);
+			wordListSizes.at(i) += ((long long)wordList.size() - i);
 
 		int guessNumber = 0;
 		while (!game->isFinished() && !game->isWon())
