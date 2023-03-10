@@ -106,7 +106,7 @@
 	*/
 	bool Game::isLetterInSolution(char _in)
 	{
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 5; i++)
 			if (solution[i] == _in)
 				return true;
 		return false;
@@ -118,5 +118,4 @@
 			if (i == _in)
 				return true;
 		return false;
-
 	}
