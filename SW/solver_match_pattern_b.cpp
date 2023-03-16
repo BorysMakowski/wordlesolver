@@ -1,11 +1,10 @@
 #include "solver_match_pattern_b.h"
 
-
 SolverMatchPatternB::SolverMatchPatternB(std::vector <std::string> _wordList) :SolverMatchPatternA(_wordList)
-	{
-		prevResult = "";
-		prevGuess = "";
-	};
+{
+	prevResult = "";
+	prevGuess = "";
+};
 SolverMatchPatternB::~SolverMatchPatternB() {};
 
 

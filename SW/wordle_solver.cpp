@@ -1,7 +1,5 @@
 #include "wordle_solver.h"
 
-
-
 void test(Solver* solver, std::ofstream& file, int timesToRun, std::vector <std::string> wordList, bool printToConsole)
 {
 	if (printToConsole)
@@ -41,7 +39,7 @@ void test(Solver* solver, std::ofstream& file, int timesToRun, std::vector <std:
 	delete solver;
 }
 
-void play(std::vector <std::string> wordList) //play in console
+void play(std::vector <std::string> wordList)
 {
 	std::string temp;
 	Game game(wordList);
@@ -64,7 +62,7 @@ void reduceWordList(std::vector <std::string>& wordList, unsigned int finalSize)
 	if (wordList.size() > finalSize && finalSize > 5)
 		while (wordList.size() > finalSize)
 		{
-			std::swap(wordList[getRandomInt(0, wordList.size()-1)], wordList.back());
+			std::swap(wordList[getRandomInt(0, wordList.size() - 1)], wordList.back());
 			wordList.pop_back();
 		}
 }

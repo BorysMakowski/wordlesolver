@@ -10,10 +10,6 @@ public:
 
 	virtual void solve(Game* game) = 0;
 
-	/*
-	// SETTERS, GETTERS
-	*/
-
 	int getTimesWon();
 
 	int getTimesLost();

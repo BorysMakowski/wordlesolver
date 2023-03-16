@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <chrono>
-
 #include "game.h"
 #include "tools.h"
 #include "brute_solver.h"
@@ -16,7 +15,6 @@
 
 void test(Solver* solver, std::ofstream& file, int timesToRun, std::vector <std::string> wordList, bool printToConsole = true);
 
-//play in console
 void play(std::vector <std::string> wordList);
 
 void reduceWordList(std::vector <std::string>& wordList, unsigned int finalSize);

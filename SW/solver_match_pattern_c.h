@@ -1,8 +1,6 @@
 #pragma once
 #include "solver_match_pattern_a.h"
 
-
-
 class SolverMatchPatternC : public SolverMatchPatternA
 {
 public:

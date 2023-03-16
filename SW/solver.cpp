@@ -1,6 +1,5 @@
 #include "solver.h"
 
-
 Solver::Solver(std::vector <std::string> _wordList)
 {
 
@@ -12,10 +11,6 @@ Solver::Solver(std::vector <std::string> _wordList)
 };
 
 Solver::~Solver() {};
-
-/*
-// SETTERS, GETTERS
-*/
 
 int Solver::getTimesWon()
 {

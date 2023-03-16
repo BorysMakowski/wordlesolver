@@ -14,7 +14,6 @@ public:
 
 private:
 	std::string knownLetters;
-	//std::vector <std::string> reducedWordList;
 };
 
 

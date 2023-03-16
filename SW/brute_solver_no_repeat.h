@@ -9,10 +9,6 @@ public:
 
 	void solve(Game* game);
 
-	/*
-	// HELPER FUNCTIONS
-	*/
-
 	bool wasTried(int wordNum);
 
 private:

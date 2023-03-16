@@ -1,10 +1,10 @@
 #include "solver_match_pattern_c.h"
 
 SolverMatchPatternC::SolverMatchPatternC(std::vector <std::string> _wordList) :SolverMatchPatternA(_wordList)
-	{
-		prevResult = "";
-		prevGuess = "";
-	};
+{
+	prevResult = "";
+	prevGuess = "";
+};
 SolverMatchPatternC::~SolverMatchPatternC() {};
 
 
@@ -66,7 +66,7 @@ void SolverMatchPatternC::solve(Game* game)
 
 bool SolverMatchPatternC::customSorterAsc(std::string lhs, std::string rhs)
 {
-	const std::vector <char> leastCommonLetters{'q','x','j','z','v','w','f','k','g','b','h','p','m','y','c','d','u','n','t','l','i','r','o','s','e','a' };
+	const std::vector <char> leastCommonLetters{ 'q','x','j','z','v','w','f','k','g','b','h','p','m','y','c','d','u','n','t','l','i','r','o','s','e','a' };
 	std::set<int> lhsScore;
 	std::set<int> rhsScore;
 

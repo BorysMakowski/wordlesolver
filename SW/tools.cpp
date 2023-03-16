@@ -14,7 +14,6 @@ std::vector <std::string> propagateWordList(std::string file_path)
 		}
 		wordFile.close();
 	}
-	//std::cout << wordList.size() << std::endl;
 	return wordList;
 }
 

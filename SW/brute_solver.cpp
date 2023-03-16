@@ -1,12 +1,6 @@
-
 #include "brute_solver.h"
 
-
-BruteSolver::BruteSolver(std::vector <std::string> _wordList) :Solver(_wordList)
-{
-	//std::cout << "BruteSolver constructor called" << std::endl;
-};
-
+BruteSolver::BruteSolver(std::vector <std::string> _wordList) :Solver(_wordList) {};
 BruteSolver::~BruteSolver() {};
 
 void BruteSolver::solve(Game* game)
